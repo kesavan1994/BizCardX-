@@ -61,13 +61,6 @@ with col3:
    uploaded_file = st.file_uploader("upload your image",accept_multiple_files=False,type=['jpeg','jpg','png'],key="file_upload")
 
 
-    # function with use to convert image to binary
-
-
-    #image upload button
-
-    # st.button('Upload bizcard',upload)
-
 def load_model():
         reader = easyocr.Reader(['en'],model_storage_directory='.',gpu=False)
         return reader
@@ -144,28 +137,14 @@ try:
     city_key= 'City'
     state_key='State'
     pincode_key='Pincode'
-    #     name = st.session_state.get(name_key,name.lower())
-    #     designation = st.session_state.get(designation_key,designation.lower())
-    #     company = st.session_state.get(company_key,company.lower())
-    #     mail = st.session_state.get(mail_key,mail.lower())
-    #     mobile = st.session_state.get(mobile_key, mobile_number)
-    #     website=st.session_state.get(website_key,website.lower())
-    #     area = st.session_state.get(area_key, area.lower())
-    #     city = st.session_state.get(city_key,city.lower())
-    #     state = st.session_state.get(state_key,state.lower())
-    #     pincode = st.session_state.get(pincode_key,pincode.lower())
-
+   
     if "button_clicked" not in st.session_state:
         st.session_state.button_clicked = False
 
 
     def callback():
         st.session_state.button_clicked = True
-    #
-    # with col3:
-    #     button_1=st.button("Extract bizcard", on_click=callback)
-    #
-    # if (button_1 or st.session_state.button_clicked):
+   
     with col2:
         name = st.text_input(name_key, value=name.lower(),key=name_key)
         company = st.text_input(company_key,value=company.lower(),key=company_key)
@@ -178,16 +157,7 @@ try:
         state = st.text_input(state_key,value=state.lower(), key=state_key)
         pincode = st.text_input(pincode_key,value=pincode.lower(), key=pincode_key)
         submitted = st.button("Submit")
-            # st.session_state[name_key] = name
-            # st.session_state[company_key] = company
-            # st.session_state[designation_key] = designation
-            # st.session_state[mail_key] = mail
-            # st.session_state[mobile_key] = mobile
-            # st.session_state[website_key] = website
-            # st.session_state[area_key] = area
-            # st.session_state[city_key] = city
-            # st.session_state[state_key] = state
-            # st.session_state[pincode_key] = pincode
+            
 
         if submitted:
             st.session_state.button_clicked = True
@@ -234,43 +204,3 @@ try:
             st.success("sucessfully insert to db")
 except:
     st.write('')
-        # if st.button("")
-# with col3:
-#         if st.button('Scraping bizcard',on_click=fun()):
-#             form_container=st.empty()
-#             fun()
-
-
-
-    # view_form()
-    #
-    # form2=view_form()
-    # st.write(form2[0])
-    #
-    # if st.button("Update"):
-    #     mycursor.execute("SET sql_safe_updates=0")
-    #     mycursor.execute(f"""UPDATE biz SET name={form2[0]},
-    #                                          designation={form2[1]},
-    #                                          company_name={form2[2]},
-    #                                          mail={form2[3]},
-    #                                          mobile_number={form2[4]},
-    #                                          website={form2[5]},
-    #                                          area={form2[6]},
-    #                                          city={form2[7]},
-    #                                          state={form2[8]},
-    #                                          pincode={form2[9]}
-    #                              WHERE company_name='{selected}'
-    #                    """)
-    #     mydb.commit()
-    #     st.balloons()
-    # def get_data():
-    #     mycursor.execute("""SELECT * from biz""")
-    #     result = mycursor.fetchall()
-    #     df=pd.DataFrame(result,columns=['name','designation','company','mail','mobile_number','website','area','city','state','pincode','photo'])
-    #
-    #     st.empty()
-    #     st.dataframe(df)
-    # get_data()
-
-
-
